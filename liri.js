@@ -11,11 +11,33 @@ nodeArg = process.argv;
 var call = nodeArg[2];
 console.log(call);
 //This variable takes an argument from the command line and tells the app the search term
-var search = "";
+var search = process.argv[3];
 
 //Loop through user arguments to find the search term
-for (i = 3; i < process.argv.length; i++) {
-    console.log(process.argv[i]);
-    search += process.argv[i];
-    console.log(search);
+if (process.argv.length > 3) {
+    for (i = 4; i < process.argv.length; i++) {
+        console.log(process.argv[i]);
+        search += "+" + process.argv[i];
+    }
 }
+console.log(search);
+
+//This is what will happen when a call is made for Twitter
+if (call == "my-tweets") {
+    console.log("tweets be here");
+}
+
+//This is what will happen when a call is made for a music search
+else if (call == "spotify-this-song") {
+    console.log("songs be here");
+}
+
+//This is what will happen when a call is made for a movie search
+else if (call == "movie-this") {
+    console.log("movies be here");
+}
+
+//This is what will happen if the user tries to call something the app can't recognize
+else {
+    console.log("Please type 'my-tweets' to see my tweets, 'spotify-this-song' to learn about a song of your choosing, or 'movie-this' to learn about a movie.");
+};
