@@ -24,17 +24,14 @@ console.log(search);
 
 //This is what will happen when a call is made for Twitter
 if (call == "my-tweets") {
-    console.log("tweets be here");
 }
 
 //This is what will happen when a call is made for a music search
 else if (call == "spotify-this-song") {
-    console.log("songs be here");
 }
 
 //This is what will happen when a call is made for a movie search
 else if (call == "movie-this") {
-    console.log("movies be here");
 }
 
 //This is what will happen if the user tries to call something the app can't recognize
