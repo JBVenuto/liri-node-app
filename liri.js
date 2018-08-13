@@ -50,13 +50,13 @@ if (call == "my-tweets") {
 //This is what will happen when a call is made for a music search
 else if (call == "spotify-this-song") {
     //This searches spotify for the query the user input on the terminal
-    spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+    spotify.search({ type: 'track', query: "i'm walking on sunshine", limit: 1}, function(err, data) {
         //Logs an error if one occurs
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-      
-    console.log(data); 
+    var spotifyArr = data.tracks.items;
+    console.log(spotifyArr[0].album.artists[0].name); 
     });
 }
 
