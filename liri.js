@@ -74,15 +74,28 @@ else if (call == "spotify-this-song") {
 else if (call == "movie-this") {
     //Check that the user typed in a movie to search and search for Mr. Nobody if they didn't put in a movie
     if (typeof search == "undefined") {
-        search = "mr.+nobody";
+        search = "mr+nobody";
     };
 
     //This searches OMDb for the query the user input on the terminal
-    request("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=b70fb2c5", function(error, response, body) {
+    request("http://www.omdbapi.com/?t=" + search + "&apikey=b70fb2c5", function(error, response, body) {
+        var omdbObj = JSON.parse(body);
 
+        // If the request is successful (i.e. if the response status code is 200)
+        if (!error && response.statusCode === 200) {
 
-    //Log the movie title, release year, IMDB rating, Rotten Tomatoes rating, country produced in, language, plot, and actors
+            //Log the movie title, release year, IMDB rating, Rotten Tomatoes rating, country produced in, language, plot, and actors
+            console.log("Title: " + omdbObj.Title);
+            console.log("Year Released: " + omdbObj.Year);
+            console.log("IMDB Rating: " + omdbObj.Ratings[0].Source);
+            console.log("Rotten Tomatoes Rating: " + omdbObj.Ratings[1].Source);
+            console.log("Country: " + omdbObj.Country);
+            console.log("Language: " + omdbObj.Language);
+            console.log("Plot: " + omdbObj.Plot);
+            console.log("Actors: " + omdbObj.Actors);
+        }
 
+    });
 }
 
 //This is what will happen when a call is made to the random file
