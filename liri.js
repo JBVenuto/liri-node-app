@@ -56,7 +56,10 @@ else if (call == "spotify-this-song") {
             return console.log('Error occurred: ' + err);
         }
     var spotifyArr = data.tracks.items;
-    console.log(spotifyArr[0].album.artists[0].name); 
+    console.log("Artist(s): " + spotifyArr[0].album.artists[0].name); 
+    console.log("Song name: " + spotifyArr[0].name); 
+    console.log("Preview link: " + spotifyArr[0].preview_url); 
+    console.log("Album: " + spotifyArr[0].album.name); 
     });
 }
 
