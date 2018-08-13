@@ -49,8 +49,9 @@ if (call == "my-tweets") {
 
 //This is what will happen when a call is made for a music search
 else if (call == "spotify-this-song") {
-    if (search == "undefined") {
-        search = "the sign";
+    //Check that the user typed in a song to search
+    if (typeof search == "undefined") {
+        search = "ace of base";
     };
     //This searches spotify for the query the user input on the terminal
     spotify.search({ type: 'track', query: search, limit: 1}, function(err, data) {
