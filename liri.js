@@ -18,10 +18,10 @@ console.log(call);
 //This variable takes an argument from the command line and tells the app the search term
 var search = process.argv[3];
 
-//Loop through user arguments to find the search term
+//If the user search term is longer than 1 word this will loop through user arguments to find the search term
 if (process.argv.length > 3) {
     for (i = 4; i < process.argv.length; i++) {
-        console.log(process.argv[i]);
+        // console.log(process.argv[i]);
         search += "+" + process.argv[i];
     }
 }
@@ -49,8 +49,11 @@ if (call == "my-tweets") {
 
 //This is what will happen when a call is made for a music search
 else if (call == "spotify-this-song") {
+    if (search == "undefined") {
+        search = "the sign";
+    };
     //This searches spotify for the query the user input on the terminal
-    spotify.search({ type: 'track', query: "i'm walking on sunshine", limit: 1}, function(err, data) {
+    spotify.search({ type: 'track', query: search, limit: 1}, function(err, data) {
         //Logs an error if one occurs
         if (err) {
             return console.log('Error occurred: ' + err);
