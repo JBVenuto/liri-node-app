@@ -59,7 +59,10 @@ else if (call == "spotify-this-song") {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
+
+    //Store the results from Spotify
     var spotifyArr = data.tracks.items;
+    //Log the artists, song name, preview link, and album
     console.log("Artist(s): " + spotifyArr[0].album.artists[0].name); 
     console.log("Song name: " + spotifyArr[0].name); 
     console.log("Preview link: " + spotifyArr[0].preview_url); 
@@ -69,6 +72,17 @@ else if (call == "spotify-this-song") {
 
 //This is what will happen when a call is made for a movie search
 else if (call == "movie-this") {
+    //Check that the user typed in a movie to search and search for Mr. Nobody if they didn't put in a movie
+    if (typeof search == "undefined") {
+        search = "mr.+nobody";
+    };
+
+    //This searches OMDb for the query the user input on the terminal
+    request("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=b70fb2c5", function(error, response, body) {
+
+
+    //Log the movie title, release year, IMDB rating, Rotten Tomatoes rating, country produced in, language, plot, and actors
+
 }
 
 //This is what will happen when a call is made to the random file
