@@ -29,12 +29,16 @@ console.log(search);
 
 //This is what will happen when a call is made for Twitter
 if (call == "my-tweets") {
+    //This tells the app what screen name to look up on twitter
     var params = {screen_name: 'venuto_joseph'};
+    //This tells the app to get the information from my timeline
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
         // console.log(tweets);
+        //Store the results from twitter
         var tweetArr = tweets;
         // console.log(tweetArr);
+        //Loop through the results and log the user name and tweet in a more readable format than the original result
         for (j = 0; j < tweetArr.length; j++) {
             console.log(tweetArr[j].user.name + ":");
             console.log(tweetArr[j].text);
@@ -45,6 +49,15 @@ if (call == "my-tweets") {
 
 //This is what will happen when a call is made for a music search
 else if (call == "spotify-this-song") {
+    //This searches spotify for the query the user input on the terminal
+    spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+        //Logs an error if one occurs
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+      
+    console.log(data); 
+    });
 }
 
 //This is what will happen when a call is made for a movie search
